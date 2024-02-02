@@ -1,3 +1,4 @@
+import Footer from "./Footer";
 import PostCard from "./PostCard";
 function Content3() {
   return (
@@ -8,9 +9,6 @@ function Content3() {
             <h3 className="text-lg font-bold">Trending</h3>
           </div>
           <div className="flex items-start gap-[20px]">
-            <PostCard></PostCard>
-            <PostCard></PostCard>
-            <PostCard></PostCard>
             <PostCard></PostCard>
           </div>
         </div>

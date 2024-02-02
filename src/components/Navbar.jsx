@@ -10,8 +10,8 @@ function Navbar() {
             <p>CONTACT</p>
           </div>
           <div className="flex items-center gap-10">
-            <div className="flex w-[166px] p-2 items-center gap-3 bg-gray-400">
-              <p>search</p>
+            <div className="flex w-[166px] p-2 items-center gap-3 bg-gray-200 rounded-md">
+              <p className="text-gray-400">search</p>
             </div>
           </div>
         </div>

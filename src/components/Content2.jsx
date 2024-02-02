@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 function Content2() {
   return (
     <div className="flex  flex-col items-center gap-[100px]">

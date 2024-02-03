@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Footer from "./Footer";
-function Content4() {
+function Content4({ blogRef }) {
   const [articles, setArticles] = useState([]);
 
   const fetchData = async () => {
@@ -18,7 +18,7 @@ function Content4() {
   }, []);
 
   return (
-    <div>
+    <div ref={blogRef}>
       <div className="flex  flex-col items-center gap-2.5 ">
         <div className="flex w-[1200px] h-[390px] flex-col items-center">
           <div className="flex flex-col items-start gap-[30px]">
@@ -69,6 +69,7 @@ function Content4() {
             <div className="flex border w-[120px] rounded-md text-gray-400 h-[50px] justify-center items-center border-gray-500 ">
               <p>Load More</p>
             </div>
+            <Footer></Footer>
           </div>
         </div>
       </div>

@@ -1,12 +1,89 @@
-import HomePage from "@/components/HomePage";
-import Footer from "@/components/Footer";
+import React, { useRef } from "react";
+
+import Content3 from "@/components/Content3";
+import Navbar from "@/components/Navbar"; // Import Navbar from the correct location
+import Scroll from "@/components/Scroll";
+import Content4 from "@/components/Content4";
+import BlogListing from "@/components/BlogListing";
+import ContactUs from "@/components/ContactUs";
+import ErrorPage from "@/components/404Page";
 export default function Home() {
+  const homeRef = useRef(null);
+  const blogRef = useRef(null);
+  const contactRef = useRef(null);
+
+  const homeHandleClick = () => {
+    homeRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  const blogHandleClick = () => {
+    blogRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  const contactHandleClick = () => {
+    contactRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
-    <div className="">
-      <HomePage></HomePage>
+    <div className="flex flex-col gap-[100px]">
+      {/* <Navbar
+        homeHandleClick={homeHandleClick}
+        blogHandleClick={blogHandleClick}
+        contactHandleClick={contactHandleClick}
+      />
+      <Scroll homeRef={homeRef} />
+      <Content3></Content3> */}
+      {/* <Content4 blogRef={blogRef} /> */}
+      {/* <BlogListing></BlogListing> */}
+      {/* <ContactUs></ContactUs> */}
+      <ErrorPage></ErrorPage>
     </div>
   );
 }
+
+// export default function Home() {
+//   const aboutRef = useRef(null);
+//   const experienceRef = useRef(null);
+//   const workRef = useRef(null);
+//   const contactRef = useRef(null);
+//   const skilssRef = useRef(null);
+//   const aboutHandleClick = () => {
+//     aboutRef.current?.scrollIntoView({ behavior: "smooth" });
+//   };
+//   const skilssHandleClick = () => {
+//     skilssRef.current?.scrollIntoView({ behavior: "smooth" });
+//   };
+//   const experienceHandleClick = () => {
+//     experienceRef.current?.scrollIntoView({ behavior: "smooth" });
+//   };
+//   const contactHandleClick = () => {
+//     contactRef.current?.scrollIntoView({ behavior: "smooth" });
+//   };
+
+//   return (
+//     <div className="flex flex-col items-center max-sm:items-center ">
+//       <div className="max-w-[1440px] max-sm-w-[375px] ">
+//         <Head
+//           aboutHandleClick={aboutHandleClick}
+//           skilssHandleClick={skilssHandleClick}
+//           experienceHandleClick={experienceHandleClick}
+//           contactHandleClick={contactHandleClick}
+//         ></Head>
+
+//         <Hero />
+//         <About aboutRef={aboutRef} />
+
+//         <Skilss skilssRef={skilssRef} />
+//         <Experience experienceRef={experienceRef} />
+//         <Work workRef={workRef} />
+//         <Top></Top>
+//         <Contact contactRef={contactRef} />
+//       </div>
+//       <Footer />
+//     </div>
+//   );
+// }
+
 // export default function Home() {
 //   const fetchPromise = fetch(
 //     "https://mdn.github.io/learning-area/javascript/apis/fetching-data/can-store/products.json"

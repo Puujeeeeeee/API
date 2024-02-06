@@ -5,6 +5,7 @@ export const FirstContextProvider = ({ children }) => {
   const [articles, setArticles] = useState([]);
   const [topArticles, setTopArticles] = useState([]);
   const [sliderArticles, setSliderArticles] = useState([]);
+  const [limit, setLimit] = useState([9]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -39,7 +40,9 @@ export const FirstContextProvider = ({ children }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await fetch("https://dev.to/api/articles?per_page=9");
+        const res = await fetch(
+          `https://dev.to/api/articles?per_page=${limit}`
+        );
         const data = await res.json();
         setSliderArticles(data);
       } catch (error) {
@@ -48,7 +51,10 @@ export const FirstContextProvider = ({ children }) => {
     };
 
     fetchData();
-  }, []);
+  }, [limit]);
+  // const loadMore = () => {
+  //   setLimit((prevLimit) => prevLimit + 3);
+  // };
 
   return (
     <FirstContext.Provider value={{ articles, topArticles, sliderArticles }}>

@@ -15,7 +15,6 @@
 //   );
 // }
 // export default PostCard;
-
 import { useContext } from "react";
 import { FirstContext } from "./utils/context";
 
@@ -23,28 +22,26 @@ function PostCard() {
   const { topArticles } = useContext(FirstContext);
 
   return (
-    <div>
-      <div className="flex gap-3 ">
-        {topArticles.map((article) => (
-          <div
-            key={article.id}
-            className="m-1 h-[320px] w-[293px] flex flex-col gap-8"
-          >
+    <div className="flex flex-wrap gap-4">
+      {topArticles.map((article) => (
+        <div key={article.id} className="w-[310px]">
+          <div className="relative h-[350px] rounded-lg overflow-hidden">
             <img
-              className="relative w-full h-full bg-cover rounded-lg"
+              className="absolute  w-full h-full object-cover"
               src={article.cover_image}
-              alt=""
+              alt={article.title}
             />
-
-            <div className="flex w-[100px] h-[25px] p-3 px-[10px] justify-center items-center absolute gap-1 rounded-md bg-[#4B6BFB]">
-              <p className="text-white">Technology</p>
+            <div className="relative w-[100px] h-[40px] top-[150px] bg-blue-500 text-white text-sm p-2 rounded-md">
+              Technology
             </div>
-            <div className="absolute text-white p-3 flex flex-wrap">
-              {article.title}
+            <div className="absolute bottom-0 left-0 right-0 p-3 bg-[rgba(0,0,0,0.6)] text-white">
+              <p className="text-lg font-bold">{article.title}</p>
+              <p className="text-sm">{article.description}</p>
             </div>
           </div>
-        ))}
-      </div>
+          <div className="flex items-center mt-2"></div>
+        </div>
+      ))}
     </div>
   );
 }

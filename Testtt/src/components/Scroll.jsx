@@ -42,17 +42,19 @@ function Scroll({ homeRef }) {
             onMouseLeave={startAutoScroll}
           />
         )}
-        <div className="w-[650px] h-[250px] rounded-lg  border flex-col items-center bg-white absolute left-2 bottom-16 p-4">
-          {articles.map((article) => (
+        {articles.length > 0 && (
+          <div className="card w-[650px] h-[250px] rounded-lg border flex-col items-center bg-white absolute left-2 bottom-16 p-8   ">
             <div>
               <p className="w-[100px] h-[30px] border bg-blue-500 rounded-md text-white flex items-center justify-center">
                 Technology
               </p>
-              <p>{article.title}</p>
-              <p></p>
+              <p className="text-4xl font-bold py-5">
+                {articles[currentSlide].title}
+              </p>
+              <p className="text-gray-500 font-medium"> August 20,2022</p>
             </div>
-          ))}
-        </div>
+          </div>
+        )}
         <div className="flex gap-3 ">
           <button
             className="w-[40px] h-[40px] border flex justify-center items-center rounded-md"

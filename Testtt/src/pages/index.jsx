@@ -27,7 +27,7 @@ export default function Home() {
   };
 
   return (
-    <div className="flex flex-col gap-[100px] items-center justify-center px-[350px]">
+    <div className="flex flex-col gap-[100px] items-center justify-center">
       <Navbar
         homeHandleClick={homeHandleClick}
         blogHandleClick={blogHandleClick}

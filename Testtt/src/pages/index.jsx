@@ -1,12 +1,6 @@
 import React, { useRef } from "react";
-// import Content3 from "@/components/Content3";
-// import Navbar from "@/components/Navbar";
-// import Scroll from "@/components/Scroll";
-// import Content4 from "@/components/Content4";
-// import BlogListing from "@/components/BlogListing";
-// import ContactUs from "@/components/ContactUs";
-// import ErrorPage from "@/components/404Page";
 
+import { useContext } from "react";
 import ErrorPage from "../components/404Page";
 import ContactUs from "../components/ContactUs";
 import Navbar from "../components/Navbar";
@@ -33,7 +27,7 @@ export default function Home() {
   };
 
   return (
-    <div className="flex flex-col gap-[100px] items-center">
+    <div className="flex flex-col gap-[100px] items-center justify-center px-[350px]">
       <Navbar
         homeHandleClick={homeHandleClick}
         blogHandleClick={blogHandleClick}
@@ -49,6 +43,19 @@ export default function Home() {
     </div>
   );
 }
+
+// import { useContext } from "react";
+// import { FirstContext } from "../components/utils/context";
+
+// export default function Home() {
+//   const value = useContext(FirstContext);
+//   console.log(value);
+//   return (
+//     <div>
+//       <p>Hello</p>
+//     </div>
+//   );
+// }
 
 // export default function Home() {
 //   const aboutRef = useRef(null);

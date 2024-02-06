@@ -1,24 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useContext } from "react";
+import { FirstContext } from "./utils/context";
 
 function Scroll({ homeRef }) {
-  const [articles, setArticles] = useState([]);
   const [currentSlide, setCurrentSlide] = useState(0);
-  const intervalTime = 4000;
+  const intervalTime = 6000;
   let intervalId;
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await fetch("https://dev.to/api/articles?per_page=4&top=1");
-        const data = await res.json();
-        setArticles(data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-
-    fetchData();
-  }, []);
+  const { articles } = useContext(FirstContext);
 
   const nextSlide = () => {
     setCurrentSlide((prevSlide) =>
@@ -42,26 +30,29 @@ function Scroll({ homeRef }) {
     clearInterval(intervalId);
   };
 
-  useEffect(() => {
-    startAutoScroll();
-    return () => {
-      stopAutoScroll();
-    };
-  }, [articles]);
-
   return (
     <div ref={homeRef}>
-      <div className="flex justify-center items-center flex-col gap-3 ">
+      <div className="flex justify-center items-center flex-col gap-3 relative ">
         {articles.length > 0 && (
           <img
-            className="flex transition-transform ease-out duration-500 rounded-lg border"
-            // style={{ transform: `translateX(-${currentSlide * 300}%)` }}
+            className="flex transition-transform ease-out duration-500 rounded-lg border w-[1300px] h-[700px]"
             src={articles[currentSlide].social_image}
             alt={articles[currentSlide].title}
             onMouseEnter={stopAutoScroll}
             onMouseLeave={startAutoScroll}
           />
         )}
+        <div className="w-[650px] h-[250px] rounded-lg  border flex-col items-center bg-white absolute left-2 bottom-16 p-4">
+          {articles.map((article) => (
+            <div>
+              <p className="w-[100px] h-[30px] border bg-blue-500 rounded-md text-white flex items-center justify-center">
+                Technology
+              </p>
+              <p>{article.title}</p>
+              <p></p>
+            </div>
+          ))}
+        </div>
         <div className="flex gap-3 ">
           <button
             className="w-[40px] h-[40px] border flex justify-center items-center rounded-md"

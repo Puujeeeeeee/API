@@ -6,7 +6,22 @@ export const FirstContextProvider = ({ children }) => {
   const [topArticles, setTopArticles] = useState([]);
   const [sliderArticles, setSliderArticles] = useState([]);
   const [allBlogListing, setAllBlogListing] = useState([]);
+  const [data, setData]=useState([]);
 
+
+  useEffect(()=>{
+    const fetchData=async()=>{
+      try{
+        const res=await fetch("https://dev.to/api/articles")
+        const data=await res.json();
+        setData(data);
+
+      }catch(error){
+        console.log(error)
+      }
+    }
+    fetchData()
+  },[]);
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -52,7 +67,7 @@ export const FirstContextProvider = ({ children }) => {
   }, []);
   return (
     <FirstContext.Provider
-      value={{ articles, topArticles, sliderArticles, allBlogListing }}
+      value={{ articles, topArticles, sliderArticles, allBlogListing, data }}
     >
       {children}
     </FirstContext.Provider>

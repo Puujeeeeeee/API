@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-
+import Link from "next/link";
+import { Router } from "next/router";
 const Navbar = ({ homeHandleClick, blogHandleClick, contactHandleClick }) => {
   const [filteredArray, setFilteredArray] = useState([]);
   const [articles, setArticles] = useState([]);
@@ -34,9 +35,7 @@ const Navbar = ({ homeHandleClick, blogHandleClick, contactHandleClick }) => {
         <img src="Logo.svg" alt="" />
         <div className="flex items-center gap-[21px]">
           <div className="bg-white w-[667px] flex items-center justify-center gap-10">
-            <button onClick={homeHandleClick}>Home</button>
-            <button onClick={blogHandleClick}>Blog</button>
-            <button onClick={contactHandleClick}>Contact</button>
+            <Link href="/BlogListing">home</Link>
           </div>
           <div className="flex items-center gap-10">
             {filteredArray.map((articles) => {

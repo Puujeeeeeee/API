@@ -7,7 +7,7 @@ function Content3() {
         <div className="flex w-[1290px] h-[390px] flex-col items-center">
           <div className="flex flex-col items-start gap-[30px]">
             <div className="flex items-start gap-8">
-              <h3 className="text-lg font-bold">Trending</h3>
+              <h3 className="text-xl font-bold">Trending</h3>
             </div>
             <div className="flex items-start gap-[20px]">
               <PostCard></PostCard>

@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useContext } from "react";
-import { FirstContext } from "./utils/context";
 
 function Content4({ blogRef }) {
   const [limit, setLimit] = useState(9);
@@ -30,23 +29,35 @@ function Content4({ blogRef }) {
       <div className="flex flex-col text-3xl font-bold gap-8 p-6">
         All Blog Post
         <div className="flex gap-6 text-xl font-normal cursor-pointer">
-          <p className="hover:text-yellow-400 duration-150">All</p>
-          <p className="hover:text-yellow-400 duration-150">Design</p>
-          <p className="hover:text-yellow-400 duration-150">Travel</p>
-          <p className="hover:text-yellow-400 duration-150">Fashion</p>
-          <p className="hover:text-yellow-400 duration-150">Technology</p>
-          <p className="hover:text-yellow-400 duration-150">Branding</p>
-          <div className="hover:text-yellow-400 duration-150">View All</div>
+          <p className="hover:text-gray-400 duration-300 hover:scale-95">All</p>
+          <p className="hover:text-gray-400 duration-300 hover:scale-95">
+            Design
+          </p>
+          <p className="hover:text-gray-400 duration-300 hover:scale-95">
+            Travel
+          </p>
+          <p className="hover:text-gray-400 duration-300 hover:scale-95">
+            Fashion
+          </p>
+          <p className="hover:text-gray-400 duration-300 hover:scale-95">
+            Technology
+          </p>
+          <p className="hover:text-gray-400 duration-300 hover:scale-95">
+            Branding
+          </p>
+          <div className="hover:text-gray-400 duration-300 hover:scale-95">
+            View All
+          </div>
         </div>
       </div>
       <div className="container flex">
-        <div className="row m-0 flex justify-center items-center flex-wrap">
+        <div className="row m-0 flex justify-center items-center flex-wrap ">
           {items.map((item) => (
             <div key={item.id} className="col-3 p-3">
-              <div className="bg-primary text-black-600 p-3 border flex w-[400px] h-[450px] flex-col gap-5 rounded-md">
+              <div className="bg-primary text-black-600 p-3 border flex w-[400px] h-[450px] flex-col gap-5 rounded-md cursor-pointer shadow-xl hover:scale-105 duration-300">
                 <img
-                  className="w-[400px] h-[270px] border"
-                  src={item.cover_image || "Image.png"} 
+                  className="w-[400px] h-[270px] border "
+                  src={item.cover_image || "Image.png"}
                   alt={item.title}
                 />
                 <p className="w-[120px] h-[30px] border rounded-md bg-blue-100 flex justify-center items-center text-blue-500">
@@ -61,8 +72,8 @@ function Content4({ blogRef }) {
           ))}
           <div className="col-12 p-3 flex justify-center items-center">
             <div
-              className="btn btn-primary w-[130px] h-[45px] flex justify-center items-center border rounded-lg text-gray-500 hover:bg- 
-                gray-300 duration-300 cursor-pointer"
+              className="btn btn-primary w-[130px] h-[45px] flex justify-center items-center border rounded-lg text-gray-500 hover:bg-gray-100 duration-500 shadow-xl hover:scale-95
+              cursor-pointer"
               onClick={loadMore}
             >
               Load More

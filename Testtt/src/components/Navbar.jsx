@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { Router } from "next/router";
 
-const Navbar = ({ homeHandleClick, blogHandleClick, contactHandleClick }) => {
+const Navbar = ({}) => {
   const [filteredArray, setFilteredArray] = useState([]);
   const [articles, setArticles] = useState([]);
 
@@ -31,27 +31,41 @@ const Navbar = ({ homeHandleClick, blogHandleClick, contactHandleClick }) => {
   };
 
   return (
-    <div className="flex w-full px-[350px] py-[32px] flex-col justify-between gap-[200px]">
-      <div className="flex justify-evenly gap-[118px]">
+    <div className="flex w-full px-[350px] py-[32px] flex-col justify-between gap-[230px]">
+      <div className="flex justify-evenly gap-[278px] ">
         <img src="Logo.svg" alt="" />
         <div className="flex items-center gap-[21px]">
           <div className="bg-white w-[667px] flex items-center justify-center gap-10">
-            <Link href={{ pathname: "BlogListing", query: { id: 22222 } }}>
+            <Link
+              className="text-xl font-medium hover:text-gray-400 duration-300 hover:scale-95  "
+              href={{ pathname: "index", query: { id: 33333 } }}
+            >
               Home
             </Link>
             <Link
-              href={{ pathname: "/contactus", query: { id: 33333 } }}
-            >contact</Link>
+              className="text-xl font-medium hover:text-gray-400 duration-300 hover:scale-95  "
+              href={{ pathname: "BlogListing", query: { id: 33333 } }}
+            >
+              Blog
+            </Link>
+            <Link
+              className="text-xl font-medium hover:text-gray-400 duration-300 hover:scale-95 "
+              href={{ pathname: "ContactUs", query: { id: 33333 } }}
+            >
+              ContactUs
+            </Link>
+
+            {/* <Link href={{ pathname: "/contactus", query: { id: el.id } }}>
+              contact
+            </Link> */}
           </div>
-          <div className="flex items-center gap-10">
-            {filteredArray.map((articles) => {
-              <input
-                type="text"
-                placeholder="Search"
-                onChange={handleSearch}
-                className="w-[166px] p-2 bg-gray-200 rounded-md"
-              />;
-            })}
+          <div className="flex items-center gap-10 shadow-xl">
+            <input
+              type="text"
+              placeholder="Search"
+              onChange={handleSearch}
+              className="w-[166px] h-[40px] p-2 bg-gray-200 "
+            ></input>
           </div>
         </div>
       </div>

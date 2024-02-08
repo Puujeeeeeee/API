@@ -1,13 +1,12 @@
 import React, { useRef } from "react";
 
 import { useContext } from "react";
-import ErrorPage from "../components/404Page";
-import ContactUs from "../components/ContactUs";
+
 import Navbar from "../components/Navbar";
 import Scroll from "../components/Scroll";
 import Content4 from "../components/Content4";
 import Content3 from "../components/Content3";
-import BlogListing from "../components/BlogListing";
+
 import Footer from "../components/Footer";
 export default function Home() {
   const homeRef = useRef(null);
@@ -27,7 +26,7 @@ export default function Home() {
   };
 
   return (
-    <div className="flex flex-col gap-[100px] items-center justify-center">
+    <div className="flex flex-col gap-[100px] items-center justify-center px-[350px]">
       <Navbar
         homeHandleClick={homeHandleClick}
         blogHandleClick={blogHandleClick}

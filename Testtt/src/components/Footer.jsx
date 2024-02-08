@@ -1,9 +1,10 @@
+import Link from "next/link";
 function Footer({ contactRef }) {
   return (
     <div ref={contactRef}>
       <div className="flex  flex-col">
         <div className=" w-[2000px] h-[500px] bg-gray-100 ">
-          <div className="flex  justify-evenly py-10 mx-52 items-center ">
+          <div className="flex  justify-evenly py-10  items-center ">
             <div className="flex flex-col w-[350px] h-[300px] gap-4 ">
               <h1 className="text-2xl">About</h1>
               <p className="text-gray-500">
@@ -19,13 +20,17 @@ function Footer({ contactRef }) {
             </div>
             <div className="flex flex-col gap-2 text-gray-500">
               <p>Home</p>
-              <p>Blog</p>
-              <p>Contact</p>
+              <Link href={{ pathname: "/BlogListing", query: { id: 22222 } }}>
+                Blog
+              </Link>
+              <Link href={{ pathname: "/ContactUs", query: { id: 33333 } }}>
+                Contact Us
+              </Link>
             </div>
             <div className="flex"></div>
           </div>
           <div
-            className="flex  justify-evenly
+            className="flex  justify-around
         "
           >
             <img src="Logo.svg" alt="" />

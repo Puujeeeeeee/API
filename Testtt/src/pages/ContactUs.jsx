@@ -58,7 +58,7 @@ function ContactUs() {
                   placeholder="Write a Messages"
                   className="w-[480px] h-[140px] p-2 bg-white rounded-lg hover:shadow-xl duration-300 "
                 ></input>
-                <div className="w-[200px] h-[45px] bg-blue-500 text-white flex justify-center items-center rounded-md hover:shadow-xl duration-300">
+                <div className="w-[200px] h-[45px] bg-blue-500 text-white flex justify-center items-center rounded-md hover:shadow-xl duration-300 cursor-pointer">
                   {" "}
                   Send Message
                 </div>

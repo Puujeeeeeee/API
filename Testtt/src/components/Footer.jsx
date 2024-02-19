@@ -20,19 +20,19 @@ function Footer({ contactRef }) {
             </div>
             <div className="flex flex-col gap-2 text-gray-500">
               <Link
-                className="hover:duration-200 hover:translate-x-4 hover:text-gray-500 hover:scale-105"
+                className="hover:duration-200 hover:text-gray-500 hover:scale-105"
                 href={{ pathname: "/Home", query: { id: 22222 } }}
               >
                 Home
               </Link>
               <Link
-                className="hover:duration-200 hover:translate-x-4 hover:text-gray-500 hover:scale-105"
+                className="hover:duration-200  hover:text-gray-500 hover:scale-105"
                 href={{ pathname: "/BlogListing", query: { id: 22222 } }}
               >
                 Blog
               </Link>
               <Link
-                className="hover:duration-200 hover:translate-x-4 hover:text-gray-500 hover:scale-105"
+                className="hover:duration-200  hover:text-gray-500 hover:scale-105"
                 href={{ pathname: "/ContactUs", query: { id: 33333 } }}
               >
                 Contact Us

@@ -26,7 +26,7 @@ function Content4({ blogRef }) {
 
   return (
     <div ref={blogRef}>
-      <div className="flex flex-col text-3xl font-bold gap-8 p-6">
+      <div className="flex flex-col text-3xl font-bold gap-8 p-6 ">
         All Blog Post
         <div className="flex gap-6 text-xl font-normal cursor-pointer">
           <p className="hover:text-gray-400 duration-300 hover:scale-95">All</p>
@@ -45,17 +45,21 @@ function Content4({ blogRef }) {
           <p className="hover:text-gray-400 duration-300 hover:scale-95">
             Branding
           </p>
-          <div className="hover:text-gray-400 duration-300 hover:scale-95">
+
+          <Link
+            className="hover:text-gray-400 duration-300 hover:scale-95"
+            href={{ pathname: "/BlogListing", query: { id: 2222 } }}
+          >
             View All
-          </div>
+          </Link>
         </div>
       </div>
       <div className="container flex">
-        <div className="row m-0 flex justify-center items-center flex-wrap ">
+        <div className="row m-0 flex justify-center items-center flex-wrap  ">
           {items.map((item) => (
             <Link href={{ pathname: "/SinglePage", query: { id: item.id } }}>
-              <div key={item.id} className="col-3 p-3">
-                <div className="bg-primary text-black-600 p-3 border flex w-[400px] h-[450px] flex-col gap-5 rounded-md cursor-pointer shadow-xl hover:scale-105 duration-300">
+              <div key={item.id} className="col-3 p-3 ">
+                <div className="bg-primary text-black-600 p-3 border flex w-[400px] h-[450px] flex-col gap-5 rounded-md cursor-pointer shadow-xl hover:scale-105 duration-300 backdrop-blur-xl">
                   <img
                     className="w-[400px] h-[270px] border "
                     src={item.cover_image || "Image.png"}
@@ -64,7 +68,9 @@ function Content4({ blogRef }) {
                   <p className="w-[120px] h-[30px] border rounded-md bg-blue-100 flex justify-center items-center text-blue-500">
                     Technology
                   </p>
-                  <p className="text-lg font-medium">{item.title}</p>
+                  <p className="text-lg font-medium hover:text-blue-400 duration-300">
+                    {item.description}
+                  </p>
                   <p className="text-gray-400">
                     {item.readable_publish_date} 2022
                   </p>
@@ -74,8 +80,8 @@ function Content4({ blogRef }) {
           ))}
           <div className="col-12 p-3 flex justify-center items-center">
             <div
-              className="btn btn-primary w-[130px] h-[45px] flex justify-center items-center border rounded-lg text-gray-500 hover:bg-gray-100 duration-500 shadow-xl hover:scale-95
-              cursor-pointer"
+              className="btn btn-primary w-[130px] h-[45px] flex justify-center items-center border rounded-lg text-gray-500 hover:bg-gray-100 duration-300 shadow-xl hover:scale-95
+              cursor-pointer animate-bounce"
               onClick={loadMore}
             >
               Load More

@@ -43,8 +43,8 @@ function Scroll({ homeRef }) {
         {articles.length > 0 && (
           <img
             className="flex transition-transform ease-out duration-500 rounded-lg border-2 border-gray-200 shadow-xl w-[1300px] h-[700px]"
-            src={articles[currentSlide].social_image}
-            alt={articles[currentSlide].title}
+            src={articles[currentSlide]?.social_image}
+            alt={articles[currentSlide]?.title}
             onMouseEnter={stopAutoScroll}
             onMouseLeave={startAutoScroll}
           />

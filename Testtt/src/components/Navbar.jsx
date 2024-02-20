@@ -3,7 +3,6 @@ import Link from "next/link";
 import { Router } from "next/router";
 
 const Navbar = ({}) => {
-  const [filteredArray, setFilteredArray] = useState([]);
   const [articles, setArticles] = useState([]);
 
   useEffect(() => {
@@ -14,7 +13,6 @@ const Navbar = ({}) => {
         );
         const articlesData = await articlesRes.json();
         setArticles(articlesData);
-        setFilteredArray(articlesData);
       } catch (error) {
         console.log(error);
       }
@@ -22,14 +20,6 @@ const Navbar = ({}) => {
 
     fetchData();
   }, []);
-
-  const handleSearch = (event) => {
-    const filteredArticles = articles.filter((article) =>
-      article.title.toLowerCase().includes(event.target.value.toLowerCase())
-    );
-    console.log(setFilteredArray(filteredArticles));
-    setFilteredArray(filteredArticles);
-  };
 
   return (
     <div className="flex w-full px-[350px] py-[32px] flex-col justify-between gap-[230px]">
@@ -60,14 +50,7 @@ const Navbar = ({}) => {
               contact
             </Link> */}
           </div>
-          <div className="flex items-center gap-10 shadow-xl ">
-            <input
-              type="text"
-              placeholder="Search"
-              onChange={handleSearch}
-              className="w-[166px] h-[40px] p-2 bg-gray-200 rounded-md"
-            ></input>
-          </div>
+          <div className="flex items-center gap-10 shadow-xl "></div>
         </div>
       </div>
     </div>

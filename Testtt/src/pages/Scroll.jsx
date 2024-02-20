@@ -4,7 +4,8 @@ import Link from "next/link";
 
 function Scroll({ homeRef }) {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const intervalTime = 6000; // Interval time in milliseconds
+  const [isLoading, setIsLoading] = useState(true);
+  const intervalTime = 6000;
   let intervalId;
 
   const { articles } = useContext(FirstContext);
@@ -31,12 +32,18 @@ function Scroll({ homeRef }) {
     clearInterval(intervalId);
   };
 
-  // Start auto-scrolling when component mounts
   useEffect(() => {
     startAutoScroll();
-    // Clean up interval when component unmounts
+    setIsLoading(true); // Set loading to true initially
+
     return () => clearInterval(intervalId);
   }, []);
+
+  useEffect(() => {
+    if (articles.length > 0) {
+      setIsLoading(false); // Set loading to false once data is loaded
+    }
+  }, [articles]);
 
   return (
     <div ref={homeRef}>
@@ -53,6 +60,24 @@ function Scroll({ homeRef }) {
           </Link>
         )}
 
+        {isLoading && ( // Render loader spinner if isLoading is true
+          <div className="flex gap-[10px] p-[20px]">
+            {Array(1)
+              .fill()
+              .map((_, index) => (
+                <div
+                  key={index}
+                  className="border border-blue-300 shadow rounded-md w-[400px] h-[450px] gap-4"
+                >
+                  <div className="animate-pulse flex gap-3">
+                    <div className="flex-1 space-y-2 py-1">
+                      <div className="w-[400px] h-[270px] bg-slate-500 rounded"></div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+          </div>
+        )}
         {articles.length > 0 && (
           <div className="card w-[650px] h-[250px] rounded-lg border flex-col items-center bg-white absolute left-2 bottom-16 p-8">
             <div>
@@ -62,10 +87,11 @@ function Scroll({ homeRef }) {
               <p className="text-4xl font-bold py-5">
                 {articles[currentSlide].title}
               </p>
-              <p className="text-gray-500 font-medium"> August 20,2022</p>
+              <p className="text-gray-500 font-medium"> August 20, 2022</p>
             </div>
           </div>
         )}
+
         <div className="flex gap-3">
           <button
             className="w-[40px] h-[40px] border flex justify-center items-center rounded-md hover:bg-gray-200 duration-300 shadow-xl hover:scale-95"

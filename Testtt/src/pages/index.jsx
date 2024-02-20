@@ -204,6 +204,8 @@ import Face from "./Home";
 export default function Home() {
   return (
     <div>
+
+
       <Face></Face>
     </div>
   );

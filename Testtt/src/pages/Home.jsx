@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 
-import { useContext } from "react";
+import { useContext, useState } from "react";
 
 import Navbar from "../components/Navbar";
 import Scroll from "./Scroll";
@@ -8,6 +8,7 @@ import Content4 from "../components/Content4";
 import Content3 from "../components/Content3";
 
 import Footer from "../components/Footer";
+
 function Face() {
   const homeRef = useRef(null);
   const blogRef = useRef(null);

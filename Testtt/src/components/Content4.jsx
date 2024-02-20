@@ -1,8 +1,12 @@
 import React, { useState, useEffect, useContext } from "react";
 import Link from "next/link";
+// Import your spinner loader component here
+
 function Content4({ blogRef }) {
   const [limit, setLimit] = useState(9);
   const [items, setItems] = useState([]);
+  const [filteredArray, setFilteredArray] = useState(items);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -12,16 +16,29 @@ function Content4({ blogRef }) {
         );
 
         const data = await response.json();
+        setFilteredArray(data);
         setItems(data);
+        setIsLoading(false);
       } catch (error) {
         console.error("Error fetching data:", error.message);
       }
     };
+
     fetchData();
   }, [limit]);
 
   const loadMore = () => {
+    setIsLoading(true);
     setLimit((prevLimit) => prevLimit + 3);
+  };
+  const handleSearch = (event) => {
+    const searchTerm = event.target.value.toLowerCase();
+    console.log("Search Term:", searchTerm);
+    const filteredArticles = items.filter((item) =>
+      item.title.toLowerCase().includes(searchTerm)
+    );
+    console.log("Filtered Articles:", filteredArticles);
+    setFilteredArray(filteredArticles);
   };
 
   return (
@@ -52,16 +69,25 @@ function Content4({ blogRef }) {
           >
             View All
           </Link>
+          <input
+            type="text"
+            placeholder="Search"
+            onChange={handleSearch}
+            className="w-[166px] h-[40px] p-2 bg-gray-200 rounded-md"
+          ></input>
         </div>
       </div>
-      <div className="container flex  ">
-        <div className="row m-0 flex justify-center items-center flex-wrap ">
-          {items.map((item) => (
-            <Link href={{ pathname: "/SinglePage", query: { id: item.id } }}>
-              <div key={item.id} className="col-3 p-3 ">
-                <div className="bg-primary text-black-600 p-3 border flex w-[400px] h-[450px] flex-col gap-5 rounded-md cursor-pointer shadow-xl hover:scale-105 duration-300 backdrop-blur-xl">
+      <div className="container flex">
+        <div className="row m-0 flex justify-center items-center flex-wrap">
+          {filteredArray.map((item) => (
+            <Link
+              key={item.id}
+              href={{ pathname: "/SinglePage", query: { id: item.id } }}
+            >
+              <div className="col-3 p-3">
+                <div className="bg-primary text-black-600 p-3 border flex w-[400px] h-[450px] flex-col gap-5 rounded-md cursor-pointer  hover:shadow-2xl duration-300  backdrop-blur-xl">
                   <img
-                    className="w-[400px] h-[270px] border "
+                    className="w-[400px] h-[270px] border"
                     src={item.cover_image || "Image.png"}
                     alt={item.title}
                   />
@@ -79,9 +105,40 @@ function Content4({ blogRef }) {
             </Link>
           ))}
           <div className="col-12 p-3 flex justify-center items-center">
+            {isLoading && ( // Render loader spinner if isLoading is true
+              <div className="flex gap-[10px] p-[20px]">
+                {Array(3)
+                  .fill()
+                  .map((_, index) => (
+                    <div
+                      key={index}
+                      className="border border-blue-300 shadow rounded-md w-[400px] h-[450px] gap-4"
+                    >
+                      <div className="animate-pulse flex gap-3">
+                        <div className="flex-1 space-y-2 py-1">
+                          <div className="w-[400px] h-[270px] bg-slate-500 rounded"></div>
+                          <div className="space-y-3">
+                            <div className="w-[120px] h-[30px] bg-slate-500 rounded"></div>
+                            <div className="w-[400px] h-[30px] bg-slate-500"></div>
+                            <div className="flex gap-[10px] ">
+                              <div className="w-[280px] h-[30px] bg-slate-500 rounded-md"></div>
+                              <div className="w-[110px] h-[30px] bg-slate-500 rounded-md"></div>
+                            </div>
+                            <div className="w-[400px] h-[30px] bg-slate-500"></div>
+                            <div className="flex gap-[10px] ">
+                              <div className="w-[110px] h-[30px] bg-slate-500 rounded-md"></div>
+                              <div className="w-[280px] h-[30px] bg-slate-500 rounded-md"></div>
+                            </div>
+                            <div className="w-[120px] h-[30px] bg-slate-500 rounded-md"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+              </div>
+            )}
             <div
-              className="btn btn-primary w-[130px] h-[45px] flex justify-center items-center border rounded-lg text-gray-500 hover:bg-gray-100 duration-300 shadow-xl hover:scale-95
-              cursor-pointer animate-bounce"
+              className="btn btn-primary w-[130px] h-[45px] flex justify-center items-center border rounded-lg text-gray-500 hover:bg-gray-100 duration-300 shadow-xl hover:scale-95 cursor-pointer "
               onClick={loadMore}
             >
               Load More

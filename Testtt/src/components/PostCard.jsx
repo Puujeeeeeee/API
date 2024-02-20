@@ -17,30 +17,32 @@
 // export default PostCard;
 import { useContext } from "react";
 import { FirstContext } from "./utils/context";
-
+import Link from "next/link";
 function PostCard() {
   const { topArticles } = useContext(FirstContext);
 
   return (
     <div className="flex flex-wrap gap-4 ">
       {topArticles.map((article) => (
-        <div key={article.id} className="w-[310px]">
-          <div className="relative h-[350px] rounded-lg overflow-hidden hover:scale-105 duration-200 shadow-xl">
-            <img
-              className="absolute  w-full h-full  object-cover"
-              src={article.cover_image}
-              alt={article.title}
-            />
-            <div className="relative w-[100px] h-[40px] top-[150px] bg-blue-500 text-white text-sm p-2 rounded-md hover:shadow-xl">
-              Technology
+        <Link href={{ pathname: "/SinglePage", query: { id: article.id } }}>
+          <div key={article.id} className="w-[310px]">
+            <div className="relative h-[350px] rounded-lg overflow-hidden hover:scale-105 duration-200 shadow-xl">
+              <img
+                className="absolute  w-full h-full  object-cover"
+                src={article.cover_image}
+                alt={article.title}
+              />
+              <div className="relative w-[100px] h-[40px] top-[150px] bg-blue-500 text-white text-sm p-2 rounded-md hover:shadow-xl">
+                Technology
+              </div>
+              <div className="absolute bottom-0 left-0 right-0 p-3 bg-[rgba(0,0,0,0.6)] text-white ">
+                <p className="text-lg font-bold">{article.title}</p>
+                <p className="text-sm">{article.description}</p>
+              </div>
             </div>
-            <div className="absolute bottom-0 left-0 right-0 p-3 bg-[rgba(0,0,0,0.6)] text-white ">
-              <p className="text-lg font-bold">{article.title}</p>
-              <p className="text-sm">{article.description}</p>
-            </div>
+            <div className="flex items-center mt-2"></div>
           </div>
-          <div className="flex items-center mt-2"></div>
-        </div>
+        </Link>
       ))}
     </div>
   );

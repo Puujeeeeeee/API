@@ -38,7 +38,7 @@ const Navbar = ({}) => {
           <div className="bg-white w-[667px] flex items-center justify-center gap-10">
             <Link
               className="text-xl font-medium hover:text-gray-400 duration-300 hover:scale-95  "
-              href={{ pathname: "index", query: { id: 33333 } }}
+              href={{ pathname: "Home", query: { id: 33333 } }}
             >
               Home
             </Link>

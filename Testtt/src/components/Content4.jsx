@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-
+import Link from "next/link";
 function Content4({ blogRef }) {
   const [limit, setLimit] = useState(9);
   const [items, setItems] = useState([]);
@@ -53,22 +53,24 @@ function Content4({ blogRef }) {
       <div className="container flex">
         <div className="row m-0 flex justify-center items-center flex-wrap ">
           {items.map((item) => (
-            <div key={item.id} className="col-3 p-3">
-              <div className="bg-primary text-black-600 p-3 border flex w-[400px] h-[450px] flex-col gap-5 rounded-md cursor-pointer shadow-xl hover:scale-105 duration-300">
-                <img
-                  className="w-[400px] h-[270px] border "
-                  src={item.cover_image || "Image.png"}
-                  alt={item.title}
-                />
-                <p className="w-[120px] h-[30px] border rounded-md bg-blue-100 flex justify-center items-center text-blue-500">
-                  Technology
-                </p>
-                <p className="text-lg font-medium">{item.title}</p>
-                <p className="text-gray-400">
-                  {item.readable_publish_date} 2022
-                </p>
+            <Link href={{ pathname: "/SinglePage", query: { id: item.id } }}>
+              <div key={item.id} className="col-3 p-3">
+                <div className="bg-primary text-black-600 p-3 border flex w-[400px] h-[450px] flex-col gap-5 rounded-md cursor-pointer shadow-xl hover:scale-105 duration-300">
+                  <img
+                    className="w-[400px] h-[270px] border "
+                    src={item.cover_image || "Image.png"}
+                    alt={item.title}
+                  />
+                  <p className="w-[120px] h-[30px] border rounded-md bg-blue-100 flex justify-center items-center text-blue-500">
+                    Technology
+                  </p>
+                  <p className="text-lg font-medium">{item.title}</p>
+                  <p className="text-gray-400">
+                    {item.readable_publish_date} 2022
+                  </p>
+                </div>
               </div>
-            </div>
+            </Link>
           ))}
           <div className="col-12 p-3 flex justify-center items-center">
             <div

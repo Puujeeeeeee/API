@@ -19,11 +19,22 @@ function Footer({ contactRef }) {
               <p className="font-medium text-gray-500">Phone:+976 95129336</p>
             </div>
             <div className="flex flex-col gap-2 text-gray-500">
-              <p>Home</p>
-              <Link href={{ pathname: "/BlogListing", query: { id: 22222 } }}>
+              <Link
+                className="hover:duration-200 hover:translate-x-4 hover:text-gray-500 hover:scale-105"
+                href={{ pathname: "/Home", query: { id: 22222 } }}
+              >
+                Home
+              </Link>
+              <Link
+                className="hover:duration-200 hover:translate-x-4 hover:text-gray-500 hover:scale-105"
+                href={{ pathname: "/BlogListing", query: { id: 22222 } }}
+              >
                 Blog
               </Link>
-              <Link href={{ pathname: "/ContactUs", query: { id: 33333 } }}>
+              <Link
+                className="hover:duration-200 hover:translate-x-4 hover:text-gray-500 hover:scale-105"
+                href={{ pathname: "/ContactUs", query: { id: 33333 } }}
+              >
                 Contact Us
               </Link>
             </div>

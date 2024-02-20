@@ -20,19 +20,19 @@ function Footer({ contactRef }) {
             </div>
             <div className="flex flex-col gap-2 text-gray-500">
               <Link
-                className="hover:duration-200 hover:text-gray-500 hover:scale-105"
+                className="hover:duration-200 hover:text-blue-400 hover:scale-105"
                 href={{ pathname: "/Home", query: { id: 22222 } }}
               >
                 Home
               </Link>
               <Link
-                className="hover:duration-200  hover:text-gray-500 hover:scale-105"
+                className="hover:duration-200  hover:text-blue-400 hover:scale-105"
                 href={{ pathname: "/BlogListing", query: { id: 22222 } }}
               >
                 Blog
               </Link>
               <Link
-                className="hover:duration-200  hover:text-gray-500 hover:scale-105"
+                className="hover:duration-200  hover:text-blue-400 hover:scale-105"
                 href={{ pathname: "/ContactUs", query: { id: 33333 } }}
               >
                 Contact Us
@@ -45,10 +45,18 @@ function Footer({ contactRef }) {
         "
           >
             <img src="Logo.svg" alt="" />
-            <div className="flex justify-center gap-7 px-2 text-gray-500">
-              <p> Terms of use</p>
-              <p>Privacy Policy</p>
-              <p> Cookie Policy</p>
+            <div className="flex justify-center gap-7 px-2 text-gray-500 ">
+              <p className="hover:text-blue-400 duration-300 hover:scale-110">
+                {" "}
+                Terms of use
+              </p>
+              <p className="hover:text-blue-400 duration-300 hover:scale-110">
+                Privacy Policy
+              </p>
+              <p className="hover:text-blue-400 duration-300 hover:scale-110">
+                {" "}
+                Cookie Policy
+              </p>
             </div>
           </div>
         </div>

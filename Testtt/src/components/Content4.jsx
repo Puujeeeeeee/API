@@ -29,33 +29,33 @@ function Content4({ blogRef }) {
       <div className="flex flex-col text-3xl font-bold gap-8 p-6 ">
         All Blog Post
         <div className="flex gap-6 text-xl font-normal cursor-pointer">
-          <p className="hover:text-gray-400 duration-300 hover:scale-95">All</p>
-          <p className="hover:text-gray-400 duration-300 hover:scale-95">
+          <p className="hover:text-blue-400 duration-300 hover:scale-95">All</p>
+          <p className="hover:text-blue-400 duration-300 hover:scale-95">
             Design
           </p>
-          <p className="hover:text-gray-400 duration-300 hover:scale-95">
+          <p className="hover:text-blue-400 duration-300 hover:scale-95">
             Travel
           </p>
-          <p className="hover:text-gray-400 duration-300 hover:scale-95">
+          <p className="hover:text-blue-400 duration-300 hover:scale-95">
             Fashion
           </p>
-          <p className="hover:text-gray-400 duration-300 hover:scale-95">
+          <p className="hover:text-blue-400 duration-300 hover:scale-95">
             Technology
           </p>
-          <p className="hover:text-gray-400 duration-300 hover:scale-95">
+          <p className="hover:text-blue-400 duration-300 hover:scale-95 hover:underline">
             Branding
           </p>
 
           <Link
-            className="hover:text-gray-400 duration-300 hover:scale-95"
+            className="hover:text-blue-400 duration-300 hover:scale-95"
             href={{ pathname: "/BlogListing", query: { id: 2222 } }}
           >
             View All
           </Link>
         </div>
       </div>
-      <div className="container flex">
-        <div className="row m-0 flex justify-center items-center flex-wrap  ">
+      <div className="container flex  ">
+        <div className="row m-0 flex justify-center items-center flex-wrap ">
           {items.map((item) => (
             <Link href={{ pathname: "/SinglePage", query: { id: item.id } }}>
               <div key={item.id} className="col-3 p-3 ">

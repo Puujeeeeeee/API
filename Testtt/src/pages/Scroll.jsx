@@ -1,5 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
-import { FirstContext } from "./utils/context";
+import { FirstContext } from "../components/utils/context";
+import Link from "next/link";
 
 function Scroll({ homeRef }) {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -41,14 +42,17 @@ function Scroll({ homeRef }) {
     <div ref={homeRef}>
       <div className="flex justify-center items-center flex-col gap-3 relative ">
         {articles.length > 0 && (
-          <img
-            className="flex transition-transform ease-out duration-500 rounded-lg border-2 border-gray-200 shadow-xl w-[1300px] h-[700px]"
-            src={articles[currentSlide]?.social_image}
-            alt={articles[currentSlide]?.title}
-            onMouseEnter={stopAutoScroll}
-            onMouseLeave={startAutoScroll}
-          />
+          <Link href={{ pathname: "/SinglePage", query: { id: articles.id } }}>
+            <img
+              className="flex transition-transform ease-out duration-500 rounded-lg border-2 border-gray-200 shadow-xl w-[1300px] h-[700px]"
+              src={articles[currentSlide]?.social_image}
+              alt={articles[currentSlide]?.title}
+              onMouseEnter={stopAutoScroll}
+              onMouseLeave={startAutoScroll}
+            />
+          </Link>
         )}
+
         {articles.length > 0 && (
           <div className="card w-[650px] h-[250px] rounded-lg border flex-col items-center bg-white absolute left-2 bottom-16 p-8">
             <div>

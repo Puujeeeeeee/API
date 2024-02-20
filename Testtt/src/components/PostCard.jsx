@@ -32,10 +32,10 @@ function PostCard() {
                 src={article.cover_image}
                 alt={article.title}
               />
-              <div className="relative w-[100px] h-[40px] top-[150px] bg-blue-500 left-2 text-white text-sm p-2 rounded-md hover:shadow-xl">
+              <div className="relative w-[100px] h-[40px] top-[150px] bg-blue-400 left-2 text-white text-sm p-2 rounded-md hover:shadow-xl">
                 Technology
               </div>
-              <div className="absolute bottom-0 left-0 right-0 p-3 bg-[rgba(0,0,0,0.6)] text-white ">
+              <div className="absolute bottom-0 left-0 right-0 p-3 bg-[rgba(0,0,0,0.6)] text-white  ">
                 <p className="text-lg font-bold">{article.title}</p>
                 <p className="text-sm hover:text-blue-400 duration-300">
                   {article.description}

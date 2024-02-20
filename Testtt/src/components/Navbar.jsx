@@ -38,19 +38,19 @@ const Navbar = ({}) => {
         <div className="flex items-center gap-[21px]">
           <div className="bg-white w-[667px] flex items-center justify-center gap-10">
             <Link
-              className="text-xl font-medium hover:text-gray-400 duration-300 hover:scale-95 cursor-pointer "
+              className="text-xl font-medium hover:text-blue-400 duration-300 hover:scale-95 cursor-pointer "
               href={{ pathname: "Home", query: { id: 33333 } }}
             >
               Home
             </Link>
             <Link
-              className="text-xl font-medium hover:text-gray-400 duration-300 hover:scale-95  "
+              className="text-xl font-medium hover:text-blue-400 duration-300 hover:scale-95  "
               href={{ pathname: "BlogListing", query: { id: 33333 } }}
             >
               Blog
             </Link>
             <Link
-              className="text-xl font-medium hover:text-gray-400 duration-300 hover:scale-95 "
+              className="text-xl font-medium hover:text-blue-400 duration-300 hover:scale-95 "
               href={{ pathname: "ContactUs", query: { id: 33333 } }}
             >
               ContactUs

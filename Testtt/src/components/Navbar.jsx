@@ -27,6 +27,7 @@ const Navbar = ({}) => {
     const filteredArticles = articles.filter((article) =>
       article.title.toLowerCase().includes(event.target.value.toLowerCase())
     );
+    console.log(setFilteredArray(filteredArticles));
     setFilteredArray(filteredArticles);
   };
 

@@ -37,7 +37,9 @@ function PostCard() {
               </div>
               <div className="absolute bottom-0 left-0 right-0 p-3 bg-[rgba(0,0,0,0.6)] text-white ">
                 <p className="text-lg font-bold">{article.title}</p>
-                <p className="text-sm">{article.description}</p>
+                <p className="text-sm hover:text-blue-400 duration-300">
+                  {article.description}
+                </p>
               </div>
             </div>
             <div className="flex items-center mt-2"></div>

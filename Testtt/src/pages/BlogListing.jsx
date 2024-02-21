@@ -20,9 +20,16 @@ function BlogListing() {
         <div className="flex w-[1200px] h-[390px] flex-col items-center">
           <div className="flex flex-col items-start gap-[30px]">
             <div className="flex items-start gap-8 ">
+              <Link
+                className="border rounded-md w-[70px] h-[30px] text-center shadow-lg hover:bg-gray-200 duration-300 hover:scale-95 "
+                href={{ pathname: "/Home" }}
+              >
+                Back
+              </Link>
               <h3 className="text-lg font-bold">All Blog Test</h3>
               <div className="flex  justify-between gap-[100px]"></div>
             </div>
+
             <div className="w-full flex justify-center items-center gap-[50px]">
               <div className="flex flex-wrap gap-3 h-[1530px] ">
                 {allBlogListing.map((allBlogListing) => (
@@ -61,6 +68,7 @@ function BlogListing() {
           </div>
         </div>
       </div>
+      <footer></footer>
     </div>
   );
 }

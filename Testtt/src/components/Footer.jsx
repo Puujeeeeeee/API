@@ -4,7 +4,7 @@ function Footer({ contactRef }) {
     <div ref={contactRef}>
       <div className="flex  flex-col">
         <div className=" w-[2000px] h-[500px] bg-gray-100 ">
-          <div className="flex  justify-evenly py-10  items-center ">
+          <div className="flex  py-10  items-start justify-evenly ">
             <div className="flex flex-col w-[350px] h-[300px] gap-4 ">
               <h1 className="text-2xl">About</h1>
               <p className="text-gray-500">
@@ -38,22 +38,32 @@ function Footer({ contactRef }) {
                 Contact Us
               </Link>
             </div>
-            <div className="flex"></div>
+            <div className="flex gap-[10px] cursor-pointer">
+              <img src="iso.svg" alt="" />
+              <img src="blog.svg" alt="" />
+              <img src="iso.svg" alt="" />
+              <img src="icon.svg" alt="" />
+            </div>
+          </div>
+          <div className="flex justify-center items-center">
+            <div className="border-b-2 w-[1300px] "></div>
           </div>
           <div
-            className="flex  justify-around
+            className="flex  py-10  items-start justify-around
         "
           >
-            <img src="Logo.svg" alt="" />
+            <img src="logo.svg" alt="" />
             <div className="flex justify-center gap-7 px-2 text-gray-500 ">
-              <p className="hover:text-blue-400 duration-300 hover:scale-110">
+              <p className="hover:text-blue-400 duration-300 hover:scale-110 ">
                 {" "}
                 Terms of use
               </p>
-              <p className="hover:text-blue-400 duration-300 hover:scale-110">
+              <div className="border-r-2"></div>
+              <p className="hover:text-blue-400 duration-300 hover:scale-110 ">
                 Privacy Policy
               </p>
-              <p className="hover:text-blue-400 duration-300 hover:scale-110">
+              <div className="border-r-2"></div>
+              <p className="hover:text-blue-400 duration-300 hover:scale-110 ">
                 {" "}
                 Cookie Policy
               </p>

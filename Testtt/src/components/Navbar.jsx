@@ -22,8 +22,8 @@ const Navbar = ({}) => {
   }, []);
 
   return (
-    <div className="flex w-full px-[350px] py-[32px] flex-col justify-between gap-[230px]">
-      <div className="flex justify-evenly gap-[278px] ">
+    <div className="flex w-full px-[350px] py-[32px] flex-col justify-between gap-[230px] sticky top-0 z-50 bg-white">
+      <div className="flex justify-around gap-[278px] ">
         <img src="Logo.svg" alt="" />
         <div className="flex items-center gap-[21px]">
           <div className="bg-white w-[667px] flex items-center justify-center gap-10">
@@ -50,7 +50,11 @@ const Navbar = ({}) => {
               contact
             </Link> */}
           </div>
-          <div className="flex items-center gap-10 shadow-xl "></div>
+          <div className="flex items-center  ">
+            <div className="w-[166px] h-[40px] p-2 text-center text-white justiy-enter rounded-md flex  animate-bounce border bg-red-400 shadow-xl">
+              HELLO WORLD
+            </div>
+          </div>
         </div>
       </div>
     </div>

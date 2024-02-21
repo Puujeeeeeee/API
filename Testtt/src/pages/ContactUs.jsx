@@ -1,6 +1,7 @@
 import { useRouter } from "next/router";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
+import Link from "next/link";
 function ContactUs() {
   const router = useRouter();
   console.log(router.query.id);
@@ -12,6 +13,12 @@ function ContactUs() {
         </div>
 
         <div className="flex flex-col  ">
+          <Link
+            className="border rounded-md w-[70px] h-[30px] text-center shadow-lg hover:bg-gray-200 duration-300 hover:scale-95 "
+            href={{ pathname: "/Home" }}
+          >
+            Back
+          </Link>
           <div className="flex items-center justify-center flex-col w-[600px] gap-[30px]">
             <div className="text-3xl font-medium ">Contact Us</div>
             <p className="flex text-gray-500">

@@ -47,6 +47,7 @@ function Scroll({ homeRef }) {
 
   return (
     <div ref={homeRef}>
+      <div></div>
       <div className="flex justify-center items-center flex-col gap-3 relative ">
         {articles.length > 0 && (
           <Link href={{ pathname: "/SinglePage", query: { id: articles.id } }}>
@@ -60,24 +61,6 @@ function Scroll({ homeRef }) {
           </Link>
         )}
 
-        {isLoading && ( // Render loader spinner if isLoading is true
-          <div className="flex gap-[10px] p-[20px]">
-            {Array(1)
-              .fill()
-              .map((_, index) => (
-                <div
-                  key={index}
-                  className="border border-blue-300 shadow rounded-md w-[400px] h-[450px] gap-4"
-                >
-                  <div className="animate-pulse flex gap-3">
-                    <div className="flex-1 space-y-2 py-1">
-                      <div className="w-[400px] h-[270px] bg-slate-500 rounded"></div>
-                    </div>
-                  </div>
-                </div>
-              ))}
-          </div>
-        )}
         {articles.length > 0 && (
           <div className="card w-[650px] h-[250px] rounded-lg border flex-col items-center bg-white absolute left-2 bottom-16 p-8">
             <div>
@@ -97,13 +80,13 @@ function Scroll({ homeRef }) {
             className="w-[40px] h-[40px] border flex justify-center items-center rounded-md hover:bg-gray-200 duration-300 shadow-xl hover:scale-95"
             onClick={prevSlide}
           >
-            <img src="iso.svg" alt="" />
+            <img src="left.svg" alt="" />
           </button>
           <button
             className="w-[40px] h-[40px] border flex justify-center items-center rounded-md hover:bg-gray-200 duration-300 shadow-xl hover:scale-95"
             onClick={nextSlide}
           >
-            <img src="icon.svg" alt="" />
+            <img src="right.svg" alt="" />
           </button>
         </div>
       </div>

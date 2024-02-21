@@ -43,42 +43,49 @@ function Content4({ blogRef }) {
 
   return (
     <div ref={blogRef}>
-      <div className="flex flex-col text-3xl font-bold gap-8 p-6 ">
+      <div className="flex flex-col text-3xl font-bold gap-8 p-6 px-[50px]">
         All Blog Post
-        <div className="flex gap-6 text-xl font-normal cursor-pointer">
-          <p className="hover:text-blue-400 duration-300 hover:scale-95">All</p>
-          <p className="hover:text-blue-400 duration-300 hover:scale-95">
-            Design
-          </p>
-          <p className="hover:text-blue-400 duration-300 hover:scale-95">
-            Travel
-          </p>
-          <p className="hover:text-blue-400 duration-300 hover:scale-95">
-            Fashion
-          </p>
-          <p className="hover:text-blue-400 duration-300 hover:scale-95">
-            Technology
-          </p>
-          <p className="hover:text-blue-400 duration-300 hover:scale-95 hover:underline">
-            Branding
-          </p>
+        <div className="flex justify-between items-center">
+          <div className="flex gap-6 text-xl font-normal cursor-pointer ">
+            <p className="hover:text-blue-400 duration-300 hover:scale-95">
+              All
+            </p>
+            <p className="hover:text-blue-400 duration-300 hover:scale-95">
+              Design
+            </p>
+            <p className="hover:text-blue-400 duration-300 hover:scale-95">
+              Travel
+            </p>
+            <p className="hover:text-blue-400 duration-300 hover:scale-95">
+              Fashion
+            </p>
+            <p className="hover:text-blue-400 duration-300 hover:scale-95">
+              Technology
+            </p>
+            <p className="hover:text-blue-400 duration-300 hover:scale-95 ">
+              Branding
+            </p>
 
-          <Link
-            className="hover:text-blue-400 duration-300 hover:scale-95"
-            href={{ pathname: "/BlogListing", query: { id: 2222 } }}
-          >
-            View All
-          </Link>
-          <input
-            type="text"
-            placeholder="Search"
-            onChange={handleSearch}
-            className="w-[166px] h-[40px] p-2 bg-gray-200 rounded-md"
-          ></input>
+            <Link
+              className="hover:text-blue-400 duration-300 hover:scale-95 hover:underline"
+              href={{ pathname: "/BlogListing", query: { id: 2222 } }}
+            >
+              View All
+            </Link>
+          </div>
+
+          <div className="">
+            <input
+              type="text"
+              placeholder="Search . . ."
+              onChange={handleSearch}
+              className="w-[166px] h-[40px] p-2 bg-gray-200 rounded-md flex text-lg input input-bordered input-accent max-w-xs"
+            ></input>
+          </div>
         </div>
       </div>
-      <div className="container flex">
-        <div className="row m-0 flex justify-center items-center flex-wrap">
+      <div className="container flex ">
+        <div className="row m-0 flex  justify-center items-center flex-wrap w-[1361px]">
           {filteredArray.map((item) => (
             <Link
               key={item.id}
@@ -95,7 +102,7 @@ function Content4({ blogRef }) {
                     Technology
                   </p>
                   <p className="text-lg font-medium hover:text-blue-400 duration-300">
-                    {item.description}
+                    {item.title}
                   </p>
                   <p className="text-gray-400">
                     {item.readable_publish_date} 2022
@@ -104,33 +111,28 @@ function Content4({ blogRef }) {
               </div>
             </Link>
           ))}
-          <div className="col-12 p-3 flex justify-center items-center">
-            {isLoading && ( // Render loader spinner if isLoading is true
+          <div className="col-12 p-3 flex flex-col justify-center items-center flex-wrap">
+            {isLoading && (
               <div className="flex gap-[10px] p-[20px]">
                 {Array(3)
                   .fill()
                   .map((_, index) => (
                     <div
                       key={index}
-                      className="border border-blue-300 shadow rounded-md w-[400px] h-[450px] gap-4"
+                      className="shadow rounded-md w-[400px] h-[450px] gap-4"
                     >
                       <div className="animate-pulse flex gap-3">
                         <div className="flex-1 space-y-2 py-1">
                           <div className="w-[400px] h-[270px] bg-slate-500 rounded"></div>
                           <div className="space-y-3">
                             <div className="w-[120px] h-[30px] bg-slate-500 rounded"></div>
-                            <div className="w-[400px] h-[30px] bg-slate-500"></div>
-                            <div className="flex gap-[10px] ">
-                              <div className="w-[280px] h-[30px] bg-slate-500 rounded-md"></div>
-                              <div className="w-[110px] h-[30px] bg-slate-500 rounded-md"></div>
-                            </div>
-                            <div className="w-[400px] h-[30px] bg-slate-500"></div>
-                            <div className="flex gap-[10px] ">
-                              <div className="w-[110px] h-[30px] bg-slate-500 rounded-md"></div>
-                              <div className="w-[280px] h-[30px] bg-slate-500 rounded-md"></div>
-                            </div>
-                            <div className="w-[120px] h-[30px] bg-slate-500 rounded-md"></div>
                           </div>
+                          <div className="w-[400px] h-[30px] bg-slate-500"></div>
+                          <div className="flex gap-[10px] ">
+                            <div className="w-[110px] h-[30px] bg-slate-500 rounded-md"></div>
+                            <div className="w-[280px] h-[30px] bg-slate-500 rounded-md"></div>
+                          </div>
+                          <div className="w-[120px] h-[30px] bg-slate-500 rounded-md"></div>
                         </div>
                       </div>
                     </div>
@@ -138,7 +140,7 @@ function Content4({ blogRef }) {
               </div>
             )}
             <div
-              className="btn btn-primary w-[130px] h-[45px] flex justify-center items-center border rounded-lg text-gray-500 hover:bg-gray-100 duration-300 shadow-xl hover:scale-95 cursor-pointer "
+              className=" w-[130px] h-[45px] flex justify-center items-center border rounded-lg text-gray-500 hover:bg-gray-100 duration-300 shadow-xl hover:scale-95 cursor-pointer "
               onClick={loadMore}
             >
               Load More

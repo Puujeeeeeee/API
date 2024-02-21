@@ -25,21 +25,23 @@ export const FirstContextProvider = ({ children }) => {
     fetchData(); // Call fetchData on component mount
   }, []); // Empty dependency array to run the effect only once after component mount
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await fetch(
-          "https://dev.to/api/articles?per_page=4&state-rising"
-        );
-        const data = await res.json();
-        setTopArticles(data);
-      } catch (error) {
-        console.log(error);
-      }
+  export async function getServerSideProps() {
+    try {
+      const res = await fetch(
+        "https://dev.to/api/articles?per_page=4&state-rising"
+      );
+      const articles = await res.json();
+    } catch (error) {
+      console.log(error);
+    }
+    return {
+      props: {
+        articles,
+      },
     };
 
     fetchData();
-  }, []);
+  }
 
   useEffect(() => {
     const fetchData = async () => {
@@ -55,24 +57,6 @@ export const FirstContextProvider = ({ children }) => {
     fetchData();
   }, []);
 
-  // Render loading animation if isLoading is true
-  if (isLoading) {
-    return (
-      <div className="flex gap-[10px] p-[20px]">
-        {Array(1)
-          .fill()
-          .map((_, index) => (
-            <div key={index}>
-              <div
-// v
-              ></div>
-            </div>
-          ))}
-      </div>
-    );
-  }
-
-  // If not loading, render children components
   return (
     <FirstContext.Provider
       value={{ articles, topArticles, sliderArticles, allBlogListing, data }}

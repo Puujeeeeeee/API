@@ -53,7 +53,7 @@ function Footer({ contactRef }) {
         "
           >
             <img src="logo.svg" alt="" />
-            <div className="flex justify-center gap-7 px-2 text-gray-500 ">
+            <div className="flex justify-center gap-7 px-2 text-gray-500 cursor-pointer">
               <p className="hover:text-blue-400 duration-300 hover:scale-110 ">
                 {" "}
                 Terms of use

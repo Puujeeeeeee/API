@@ -7,7 +7,7 @@ export const FirstContextProvider = ({ children }) => {
   const [topArticles, setTopArticles] = useState([]);
   const [sliderArticles, setSliderArticles] = useState([]);
   const [allBlogListing, setAllBlogListing] = useState([]);
-  const [data, setData] = useState([]);
+  const [filteredArray, setFilteredArray] = useState();
   const [isLoading, setIsLoading] = useState(true); // Initially, set loading to true
 
   useEffect(() => {
@@ -25,41 +25,47 @@ export const FirstContextProvider = ({ children }) => {
     fetchData(); // Call fetchData on component mount
   }, []); // Empty dependency array to run the effect only once after component mount
 
-  export async function getServerSideProps() {
-    try {
-      const res = await fetch(
-        "https://dev.to/api/articles?per_page=4&state-rising"
-      );
-      const articles = await res.json();
-    } catch (error) {
-      console.log(error);
-    }
-    return {
-      props: {
-        articles,
-      },
-    };
-
-    fetchData();
-  }
-
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchTopArticles = async () => {
       try {
-        const res = await fetch(`https://dev.to/api/articles?per_page`);
-        const data = await res.json();
-        setAllBlogListing(data);
+        const res = await fetch(
+          "https://dev.to/api/articles?per_page=4&state=rising"
+        );
+        const articles = await res.json();
+        setTopArticles(articles);
       } catch (error) {
         console.log(error);
       }
     };
 
-    fetchData();
+    fetchTopArticles();
+  }, []);
+
+  useEffect(() => {
+    const fetchAllBlogListing = async () => {
+      try {
+        const res = await fetch("https://dev.to/api/articles?per_page");
+        const data = await res.json();
+        setAllBlogListing(data);
+        setFilteredArray(data)
+        
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchAllBlogListing();
   }, []);
 
   return (
     <FirstContext.Provider
-      value={{ articles, topArticles, sliderArticles, allBlogListing, data }}
+      value={{
+        articles,
+        topArticles,
+        sliderArticles,
+        allBlogListing,
+        isLoading,
+      }}
     >
       {children}
     </FirstContext.Provider>

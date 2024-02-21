@@ -88,6 +88,7 @@ function Scroll({ homeRef }) {
           >
             <img src="right.svg" alt="" />
           </button>
+          
         </div>
       </div>
     </div>

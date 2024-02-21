@@ -51,7 +51,7 @@ const Navbar = ({}) => {
             </Link> */}
           </div>
           <div className="flex items-center  ">
-            <div className="w-[166px] h-[40px] p-2 text-center text-white justiy-enter rounded-md flex  animate-bounce border bg-red-400 shadow-xl">
+            <div className="w-[166px] h-[40px] p-2 text-center  text-white justify-center rounded-md flex  animate-bounce border bg-red-400 shadow-xl">
               HELLO WORLD
             </div>
           </div>

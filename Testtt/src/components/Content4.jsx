@@ -1,36 +1,30 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState } from "react";
 import Link from "next/link";
-// Import your spinner loader component here
 
-function Content4({ blogRef }) {
-  const [limit, setLimit] = useState(9);
+function Content4({ article }) {
+  const [limit, setLimit] = useState();
   const [items, setItems] = useState([]);
   const [filteredArray, setFilteredArray] = useState(items);
   const [isLoading, setIsLoading] = useState(true);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch(
-          `https://dev.to/api/articles?per_page=${limit}`
-        );
-
-        const data = await response.json();
-        setFilteredArray(data);
-        setItems(data);
-        setIsLoading(false);
-      } catch (error) {
-        console.error("Error fetching data:", error.message);
-      }
+  async function getServerSideProps() {
+    const res = await fetch(`https://dev.to/api/articles?per_page=${limit}`);
+    const data = await res.json();
+    setFilteredArray(data);
+    setItems(data);
+    setIsLoading(false);
+    return {
+      props: {
+        article: data,
+      },
     };
-
-    fetchData();
-  }, [limit]);
+  }
 
   const loadMore = () => {
     setIsLoading(true);
     setLimit((prevLimit) => prevLimit + 3);
   };
+
   const handleSearch = (event) => {
     const searchTerm = event.target.value.toLowerCase();
     console.log("Search Term:", searchTerm);
@@ -42,7 +36,7 @@ function Content4({ blogRef }) {
   };
 
   return (
-    <div ref={blogRef}>
+    <div>
       <div className="flex flex-col text-3xl font-bold gap-8 p-6 px-[50px]">
         All Blog Post
         <div className="flex justify-between items-center">
@@ -80,11 +74,11 @@ function Content4({ blogRef }) {
               placeholder="Search . . ."
               onChange={handleSearch}
               className="w-[166px] h-[40px] p-2 bg-gray-200 rounded-md flex text-lg input input-bordered input-accent max-w-xs"
-            ></input>
+            />
           </div>
         </div>
       </div>
-      <div className="container flex ">
+      <div className="container flex">
         <div className="row m-0 flex  justify-center items-center flex-wrap w-[1361px]">
           {filteredArray.map((item) => (
             <Link
@@ -119,7 +113,7 @@ function Content4({ blogRef }) {
                   .map((_, index) => (
                     <div
                       key={index}
-                      className="shadow rounded-md w-[400px] h-[450px] gap-4"
+                      className="shadow rounded-md w-[400px] h-[450px] gap-8"
                     >
                       <div className="animate-pulse flex gap-3">
                         <div className="flex-1 space-y-2 py-1">

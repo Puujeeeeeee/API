@@ -15,15 +15,23 @@
 //   );
 // }
 // export default PostCard;
-import { useContext } from "react";
-import { FirstContext } from "./utils/context";
+// import { useContext } from "react";
+// import { FirstContext } from "./utils/context";
 import Link from "next/link";
-function PostCard() {
-  const { topArticles } = useContext(FirstContext);
 
+export async function getServerSideProps() {
+  const res = await fetch("https://dev.to/api/articles?per_page");
+  const articles = await res.json();
+  return {
+    props: {
+      topArticles: articles,
+    },
+  };
+}
+function PostCard({ topArticles }) {
   return (
     <div className="flex flex-wrap gap-4 ">
-      {topArticles.map((article) => (
+      {topArticles?.map((article) => (
         <Link href={{ pathname: "/SinglePage", query: { id: article.id } }}>
           <div key={article.id} className="w-[310px]">
             <div className="relative h-[350px] rounded-lg overflow-hidden hover:scale-105 duration-200 shadow-xl">

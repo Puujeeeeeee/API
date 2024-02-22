@@ -85,7 +85,7 @@ function Content4({ blogRef }) {
         </div>
       </div>
       <div className="container flex ">
-        <div className="row m-0 flex  justify-center items-center flex-wrap w-[1361px]">
+        <div className="row m-0 flex  justify-center items-center flex-wrap w-[1361px] h-[1500px]">
           {filteredArray.map((item) => (
             <Link
               key={item.id}
@@ -151,5 +151,6 @@ function Content4({ blogRef }) {
     </div>
   );
 }
+
 
 export default Content4;

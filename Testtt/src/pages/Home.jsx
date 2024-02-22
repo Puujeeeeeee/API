@@ -4,7 +4,7 @@ import { useContext, useState } from "react";
 
 import Navbar from "../components/Navbar";
 import Scroll from "./Scroll";
-import Content4 from "../components/Content4";
+import Content4 from "./Content4";
 import Content3 from "./Content3";
 
 import Footer from "../components/Footer";
